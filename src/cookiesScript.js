@@ -30,7 +30,7 @@ window.COOKIES_ENABLER = window.COOKIES_ENABLER || (function () {
             iframesPlaceholder: true,
             textIframe: 'To view this content you need to',
             iframesPlaceholderClass: 'ce-iframe-placeholder',
-            onEnable: '',
+            onEnable: startGoogleTrack,
             onDismiss: '',
             onDisable: '',
             onAppear: '',
@@ -59,6 +59,15 @@ window.COOKIES_ENABLER = window.COOKIES_ENABLER || (function () {
             trackID: ''
         },
         opts = {cookieName: 'ce-cookie'}, domElmts, start_Y;
+
+        const startGoogleTrack = () => {
+            (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+            new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+            j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+            'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+            })(window,document,'script','dataLayer', defaults.trackID);
+        }
+
         const trackGoogle = (trackID) => {
             if(cookie.get() != 'Y') {
                 // disable
@@ -70,9 +79,9 @@ window.COOKIES_ENABLER = window.COOKIES_ENABLER || (function () {
                     var name = eqPos > -1 ? cookieTemp.substr(0, eqPos) : cookieTemp;
                     document.cookie = name + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT";
                 }
-            } 
-            // enable 
-                        
+            }
+            // enable
+
             defaults = _extend({}, defaults, {trackID: trackID});
         }
     function _extend() {
@@ -111,26 +120,26 @@ window.COOKIES_ENABLER = window.COOKIES_ENABLER || (function () {
     }
     const bannerHTML = (options) => {
         return document.getElementById('ce-banner-html') !== null ?
-    
+
               document.getElementById('ce-banner-html').innerHTML :
-    
-    
+
+
               `<p> ${options.textHTML}</p>
               <p style="text-align: center;">
               <a href="#" class="ce-accept ${options.class.accept}">${options.enableText}</a>${options.hasCancelButton ? `<a href="#" class="ce-disable ${options.class.disable}">${options.disableText}</a>` : ''}<a href="#" class="ce-more-link ${options.class.more}">${options.moreText}</a>
               </p>`
       }
-    
+
       const bannerShowHTML = (options) => {
           return options.hasBannerShow ? `<div class="${options.moreClass}"><span id="cookie_hdr_showagain">${options.textBannerShow}</span></div>` : '';
       }
-    
-    
+
+
       const iframesPlaceholderHTML = (options) => {
         return document.getElementById('ce-iframePlaceholder-html') !== null ?
-    
+
         document.getElementById('ce-iframePlaceholder-html').innerHTML :
-    
+
         `<p class="${options.class.accept}">${options.textIframe}</p>`
         // <a href="#" class="ce-accept">${options.enableText}</a>
       }
@@ -241,13 +250,8 @@ window.COOKIES_ENABLER = window.COOKIES_ENABLER || (function () {
             window.removeEventListener('scroll', handleScroll);
             window[`ga-disable-${defaults.trackID}`] = false;
             if (typeof opts.onEnable === "function") opts.onEnable();
-            (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-            new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-            j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-            'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-            })(window,document,'script','dataLayer', defaults.trackID);
         }
-        
+
     }, 250, false);
     var disableCookies = function (event) {
         if (typeof event != "undefined" && event.type === 'click') {
@@ -269,7 +273,7 @@ window.COOKIES_ENABLER = window.COOKIES_ENABLER || (function () {
             el = el + el2;
             document.body.insertAdjacentHTML('beforeend', el);
         }
-        
+
         function createInverse() {
 
         var el = '<div style="display:none;" class="'+ opts.bannerClass +'">'
@@ -281,7 +285,7 @@ window.COOKIES_ENABLER = window.COOKIES_ENABLER || (function () {
 
         document.body.insertAdjacentHTML('beforeend', el);
       }
-      
+
         function dismiss() {
             domElmts.banner[0].style.animationName = 'example';
             domElmts.banner[0].style.animationDuration = '3s';
