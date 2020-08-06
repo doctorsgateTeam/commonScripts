@@ -1,0 +1,24 @@
+{
+  "name": "commonscripts",
+  "version": "1.0.0",
+  "description": "Common scripts used for on doctorsgate company websites",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack --config webpack.config.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/doctorsgateTeam/commonScripts.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/doctorsgateTeam/commonScripts/issues"
+  },
+  "homepage": "https://github.com/doctorsgateTeam/commonScripts#readme",
+  "devDependencies": {
+    "webpack": "^4.44.1",
+    "webpack-cli": "^3.3.12"
+  }
+}
