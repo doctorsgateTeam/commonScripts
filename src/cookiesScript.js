@@ -76,7 +76,7 @@ window.COOKIES_ENABLER = window.COOKIES_ENABLER || (function () {
                             dataLayer.push(arguments);
                         }
                         gtag('js', new Date());
-                        gtag('config', ${defaults.trackID}, {
+                        gtag('config', '${defaults.trackID}', {
                             'anonymize_ip': true,
                         });`;
                         document.getElementsByTagName('head')[0].appendChild(script2);
