@@ -71,8 +71,7 @@ window.COOKIES_ENABLER = window.COOKIES_ENABLER || (function () {
                         script.async = true;
                         document.getElementsByTagName('head')[0].appendChild(script);
                         var script2 = document.createElement('script');
-                        script2.innerHTML = `script.async = true;
-                        window.dataLayer = window.dataLayer || [];
+                        script2.innerHTML = `window.dataLayer = window.dataLayer || [];
                         function gtag() {
                             dataLayer.push(arguments);
                         }
