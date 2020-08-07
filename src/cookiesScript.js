@@ -21,6 +21,7 @@ window.COOKIES_ENABLER = window.COOKIES_ENABLER || (function () {
             enableText: 'Akzeptieren',
             disableText: 'Disable Cookies',
             moreText: 'Mehr',
+            linkMore: '#',
             eventScroll: false,
             scrollOffset: 200,
             clickOutside: false,
@@ -56,13 +57,14 @@ window.COOKIES_ENABLER = window.COOKIES_ENABLER || (function () {
                     disable: '',
                     more: ''
             },
-            trackID: ''
+            trackID: '',
+            version: 0
         },
         opts = {cookieName: 'ce-cookie'}, domElmts, start_Y;
 
-        
-        const startGoogleTrack = (version) => {
-            switch (version) {
+
+        const startGoogleTrack = () => {
+            switch (defaults.version) {
                 case 1:
                     window.dataLayer = window.dataLayer || [];
                     function gtag() {
@@ -83,7 +85,7 @@ window.COOKIES_ENABLER = window.COOKIES_ENABLER || (function () {
             }
         }
 
-        const trackGoogle = (trackID) => {
+        const trackGoogle = (trackID, version) => {
             if(cookie.get() != 'Y') {
                 // disable
                 window[`ga-disable-${trackID}`] = true;
@@ -96,7 +98,7 @@ window.COOKIES_ENABLER = window.COOKIES_ENABLER || (function () {
                 }
             }
             // enable
-            defaults = _extend({}, defaults, {trackID: trackID, onEnable: startGoogleTrack});
+            defaults = _extend({}, defaults, {trackID: trackID, onEnable: startGoogleTrack, version: version});
         }
     function _extend() {
         var i, key;
@@ -140,7 +142,7 @@ window.COOKIES_ENABLER = window.COOKIES_ENABLER || (function () {
 
               `<p> ${options.textHTML}</p>
               <p style="text-align: center;">
-              <a href="#" class="ce-accept ${options.class.accept}">${options.enableText}</a>${options.hasCancelButton ? `<a href="#" class="ce-disable ${options.class.disable}">${options.disableText}</a>` : ''}<a href="#" class="ce-more-link ${options.class.more}">${options.moreText}</a>
+              <a href="#" rel="noopener" aria-label="Accept cookies" class="ce-accept ${options.class.accept}">${options.enableText}</a>${options.hasCancelButton ? `<a aria-label="Reject cookies" href="#" class="ce-disable ${options.class.disable}">${options.disableText}</a>` : ''}<a href="${options.linkMore}" rel="noopener" aria-label="Privacy policy information" class="ce-more-link ${options.class.more}">${options.moreText}</a>
               </p>`
       }
 
