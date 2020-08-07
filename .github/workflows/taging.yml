@@ -13,9 +13,37 @@ on:
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
 
+
+  create-bundles:
+    name: "Create production bundles"
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@master
+        with:
+          persist-credentials: false # otherwise, the token used is the GITHUB_TOKEN, instead of your personal token
+          fetch-depth: 0 # otherwise, you will failed to push refs to dest repo
+      - name: "Install dependencies"
+        uses: actions/setup-node@v1
+        with:
+          node-version: '12.x'
+        run: yarn install
+        run: yarn build
+      - name: "Commit bundles"
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git commit -m "Add changes" -a 
+      - name: Push changes
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+    
+
   bump-version:
     name: "Bump Version on master"
     runs-on: ubuntu-latest
+    needs: create-bundles
 
     steps:
       - name: "Checkout source code"
@@ -37,18 +65,4 @@ jobs:
       - name: "cat package.json"
         run: cat ./package.json
 
-  # This workflow contains a single job called "build"
-  build:
-    # The type of runner that the job will run on
-    runs-on: ubuntu-latest
-
-    # Steps represent a sequence of tasks that will be executed as part of the job
-    steps:
-    # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-    - uses: actions/checkout@v2
-      with:
-        fetch-depth: 2
-         
-    - name: Detect and Tag New Version
-      uses: salsify/action-detect-and-tag-new-version@v2.0.1
 
