@@ -1,6 +1,6 @@
 {
   "name": "commonscripts",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Common scripts used for on doctorsgate company websites",
   "main": "index.js",
   "scripts": {
