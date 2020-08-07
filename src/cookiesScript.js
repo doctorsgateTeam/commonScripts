@@ -30,7 +30,7 @@ window.COOKIES_ENABLER = window.COOKIES_ENABLER || (function () {
             iframesPlaceholder: true,
             textIframe: 'To view this content you need to',
             iframesPlaceholderClass: 'ce-iframe-placeholder',
-            onEnable: startGoogleTrack,
+            onEnable: null,
             onDismiss: '',
             onDisable: '',
             onAppear: '',
@@ -81,8 +81,7 @@ window.COOKIES_ENABLER = window.COOKIES_ENABLER || (function () {
                 }
             }
             // enable
-
-            defaults = _extend({}, defaults, {trackID: trackID});
+            defaults = _extend({}, defaults, {trackID: trackID, onEnable: startGoogleTrack});
         }
     function _extend() {
         var i, key;
