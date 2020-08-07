@@ -66,19 +66,21 @@ window.COOKIES_ENABLER = window.COOKIES_ENABLER || (function () {
         const startGoogleTrack = () => {
             switch (defaults.version) {
                 case 1:
-                    try {
-                        document.getElementsByTagName('head')[0].appendChild(`<script async src="https://www.googletagmanager.com/gtag/js?id=${defaults.trackID}"></script>`)
-                        document.getElementsByTagName('head')[0].appendChild(`<script>window.dataLayer = window.dataLayer || [];
+                        var script = document.createElement('script');
+                        script.src = `https://www.googletagmanager.com/gtag/js?id=${defaults.trackID}`;
+                        script.async = true;
+                        document.getElementsByTagName('head')[0].appendChild(script);
+                        var script2 = document.createElement('script');
+                        script.innerHTML = `script.async = true;
+                        window.dataLayer = window.dataLayer || [];
                         function gtag() {
                             dataLayer.push(arguments);
                         }
                         gtag('js', new Date());
                         gtag('config', ${defaults.trackID}, {
                             'anonymize_ip': true,
-                        });</script>`)
-                    } catch(_) {
-                        setTimeout(() => startGoogleTrack(), 300)
-                    }
+                        });`;
+                        document.getElementsByTagName('head')[0].appendChild(script2);
                     break;
                 default:
                     (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
