@@ -66,14 +66,15 @@ window.COOKIES_ENABLER = window.COOKIES_ENABLER || (function () {
         const startGoogleTrack = () => {
             switch (defaults.version) {
                 case 1:
-                    window.dataLayer = window.dataLayer || [];
+                    document.getElementsByTagName('head')[0].appendChild(`<script async src="https://www.googletagmanager.com/gtag/js?id=${defaults.trackID}"></script>`)
+                    document.getElementsByTagName('head')[0].appendChild(`<script>window.dataLayer = window.dataLayer || [];
                     function gtag() {
                         dataLayer.push(arguments);
                     }
                     gtag('js', new Date());
-                    gtag('config', defaults.trackID, {
+                    gtag('config', ${defaults.trackID}, {
                         'anonymize_ip': true,
-                    });
+                    });</script>`)
                     break;
                 default:
                     (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
