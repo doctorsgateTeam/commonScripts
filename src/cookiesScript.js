@@ -60,6 +60,7 @@ window.COOKIES_ENABLER = window.COOKIES_ENABLER || (function () {
         },
         opts = {cookieName: 'ce-cookie'}, domElmts, start_Y;
 
+        
         const startGoogleTrack = (version) => {
             switch (version) {
                 case 1:
