@@ -87,7 +87,7 @@ window.COOKIES_ENABLER = window.COOKIES_ENABLER || (function () {
             }
         }
 
-        const trackGoogle = (trackID, version) => {
+        const trackGoogle = (trackID, version, host) => {
             if(cookie.get() != 'Y') {
                 // disable
                 window[`ga-disable-${trackID}`] = true;
@@ -96,7 +96,7 @@ window.COOKIES_ENABLER = window.COOKIES_ENABLER || (function () {
                     var cookieTemp = cookies[i];
                     var eqPos = cookieTemp.indexOf("=");
                     var name = eqPos > -1 ? cookieTemp.substr(0, eqPos) : cookieTemp;
-                    document.cookie = name + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT;path=/";
+                    document.cookie = name + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT;path=/;domain=" + host;
                 }
             }
             // enable
@@ -236,7 +236,7 @@ window.COOKIES_ENABLER = window.COOKIES_ENABLER || (function () {
 
         if (cookie.get() == 'Y') {
             if (typeof opts.onEnable === "function") opts.onEnable();
-            banner.createInverse();
+            // banner.createInverse();
             scripts.get();
             iframes.get();
         } else if (cookie.get() == 'N') {
