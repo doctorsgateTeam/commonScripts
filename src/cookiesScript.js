@@ -275,12 +275,12 @@ window.COOKIES_ENABLER = window.COOKIES_ENABLER || (function () {
         if (typeof event != "undefined" && event.type === 'click') {
             event.preventDefault();
         }
-        if (cookie.get() != 'N') {
+        // if (cookie.get() != 'N') {
             cookie.set('N');
             banner.dismiss();
             window.removeEventListener('scroll', handleScroll);
             if (typeof opts.onDisable === "function") opts.onDisable();
-        }
+        //}
     }
     var banner = (function () {
         function create() {
