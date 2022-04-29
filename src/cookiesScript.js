@@ -18,7 +18,7 @@ window.COOKIES_ENABLER = window.COOKIES_ENABLER || (function () {
             moreLinkClass: 'ce-more-link',
             hasCancelButton: true,
             textHTML: 'Auf unserer Webseite kommen verschiedene Cookies zum Einsatz: technische, zu Marketing-Zwecken und solche zu Analyse-Zwecken; Sie können unsere Webseite grundsätzlich auch ohne das Setzen von Cookies besuchen. Hiervon ausgenommen sind die technisch notwendigen Cookies. Sie können die aktuellen Einstellungen jederzeit durch Klicken auf Datenschutz & Cookie-Richtlinien (unten rechts) einsehen und ändern. Ihnen steht jederzeit ein Widerrufsrecht zu. Weitere Informationen finden Sie unter "Mehr", unserer Datenschutzerklärung sowie unter "Cookies". Durch Klicken auf "Akzeptieren" erklären Sie sich einverstanden, dass wir die vorgenannten Cookies zu Marketing- und zu Analyse-Zwecken setzen.',
-            enableText: 'Akzeptieren',
+            enableText: 'Alle Cookies akzeptieren',
             disableText: 'Disable Cookies',
             moreText: 'Mehr',
             linkMore: '#',
@@ -144,7 +144,7 @@ window.COOKIES_ENABLER = window.COOKIES_ENABLER || (function () {
 
               `<p> ${options.textHTML}</p>
               <p style="text-align: center;">
-              <a href="#" rel="noopener" aria-label="Accept cookies" class="ce-accept ${options.classAccept}">${options.enableText}</a>${options.hasCancelButton ? `<a aria-label="Reject cookies" href="#" class="ce-disable ${options.classDisable}">${options.disableText}</a>` : ''}<a href="${options.linkMore}" rel="noopener" aria-label="Privacy policy information" class="ce-more-link ${options.classMore}">${options.moreText}</a>
+              <a href="#" rel="noopener" aria-label="Accept cookies" class="ce-accept ${options.classAccept}">${options.enableText}</a><a href="#" rel="noopener" aria-label="Accept cookies" class="ce-accept ${options.classAccept}">Nur notwendige Cookies akzeptieren</a>${options.hasCancelButton ? `<a aria-label="Reject cookies" href="#" class="ce-disable ${options.classDisable}">${options.disableText}</a>` : ''}<a href="${options.linkMore}" rel="noopener" aria-label="Privacy policy information" class="ce-more-link ${options.classMore}">${options.moreText}</a>
               </p>`
       }
 
