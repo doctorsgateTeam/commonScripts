@@ -144,7 +144,7 @@ window.COOKIES_ENABLER = window.COOKIES_ENABLER || (function () {
               document.getElementById('ce-banner-html').innerHTML :
 
 
-              `<p> ${options.titleHTML}</p><br>
+              `<p> ${options.titleHTML}</p>
               <p> ${options.textHTML}</p>
               <p style="text-align: center;">
               <a href="#" rel="noopener" aria-label="Accept cookies" class="ce-accept ${options.classAccept}">${options.enableText}</a><a href="#" rel="noopener" aria-label="Accept cookies" class="ce-accept ${options.classAccept}">Nur notwendige Cookies akzeptieren</a>${options.hasCancelButton ? `<a aria-label="Reject cookies" href="#" class="ce-disable ${options.classDisable}">${options.disableText}</a>` : ''}<a href="${options.linkMore}" rel="noopener" aria-label="Privacy policy information" class="ce-more-link ${options.classMore}">${options.moreText}</a>
