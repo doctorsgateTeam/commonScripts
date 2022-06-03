@@ -16,7 +16,7 @@ window.COOKIES_ENABLER = window.COOKIES_ENABLER || (function () {
             bannerClass: 'ce-banner',
             moreClass: 'ce-more',
             moreLinkClass: 'ce-more-link',
-            hasCancelButton: true,
+            hasCancelButton: false,
             titleHTML: 'Wir verwenden Cookies und andere Technologien.',
             textHTML: 'Diese Website verwendet Cookies und ähnliche Funktionen, um Endgeräteinformationen und personenbezogene Daten zu verarbeiten. Die Verarbeitung erfolgt zur Einbindung von Inhalten, externen Services und Komponenten von Drittanbietern, statistischen Auswertungen, personalisierter Werbung und der Integration von Social Media. Abhängig von der jeweiligen Funktion können die Daten an Dritte innerhalb der EU weitergegeben werden. Die Einwilligung ist immer freiwillig, keine Voraussetzung für die Nutzung unserer Website und kann jederzeit über das Symbol unten links abgelehnt oder widerrufen werden.',
             enableText: 'Alle Cookies akzeptieren',
