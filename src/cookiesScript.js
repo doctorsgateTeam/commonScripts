@@ -17,7 +17,9 @@ window.COOKIES_ENABLER = window.COOKIES_ENABLER || (function () {
             moreClass: 'ce-more',
             moreLinkClass: 'ce-more-link',
             hasCancelButton: true,
-            textHTML: 'Auf unserer Webseite kommen verschiedene Cookies zum Einsatz: technische, zu Marketing-Zwecken und solche zu Analyse-Zwecken; Sie können unsere Webseite grundsätzlich auch ohne das Setzen von Cookies besuchen. Hiervon ausgenommen sind die technisch notwendigen Cookies. Sie können die aktuellen Einstellungen jederzeit durch Klicken auf Datenschutz & Cookie-Richtlinien (unten rechts) einsehen und ändern. Ihnen steht jederzeit ein Widerrufsrecht zu. Weitere Informationen finden Sie unter "Mehr", unserer Datenschutzerklärung sowie unter "Cookies". Durch Klicken auf "Akzeptieren" erklären Sie sich einverstanden, dass wir die vorgenannten Cookies zu Marketing- und zu Analyse-Zwecken setzen.',
+            titleHTML: 'Wir verwenden Cookies und andere Technologien.',
+            textHTML: 'Diese Website verwendet Cookies und ähnliche Funktionen, um Endgeräteinformationen und personenbezogene Daten zu verarbeiten. Die Verarbeitung erfolgt zur Einbindung von Inhalten, externen Services und Komponenten von Drittanbietern, statistischen Auswertungen, personalisierter Werbung und der Integration von Social Media. Abhängig von der jeweiligen Funktion können die Daten an Dritte innerhalb der EU weitergegeben werden. Die Einwilligung ist immer freiwillig, keine Voraussetzung für die Nutzung unserer Website und kann jederzeit über das Symbol unten links abgelehnt oder widerrufen werden.',
+            // textHTML: 'Auf unserer Webseite kommen verschiedene Cookies zum Einsatz: technische, zu Marketing-Zwecken und solche zu Analyse-Zwecken; Sie können unsere Webseite grundsätzlich auch ohne das Setzen von Cookies besuchen. Hiervon ausgenommen sind die technisch notwendigen Cookies. Sie können die aktuellen Einstellungen jederzeit durch Klicken auf Datenschutz & Cookie-Richtlinien (unten rechts) einsehen und ändern. Ihnen steht jederzeit ein Widerrufsrecht zu. Weitere Informationen finden Sie unter "Mehr", unserer Datenschutzerklärung sowie unter "Cookies". Durch Klicken auf "Akzeptieren" erklären Sie sich einverstanden, dass wir die vorgenannten Cookies zu Marketing- und zu Analyse-Zwecken setzen.',
             enableText: 'Alle Cookies akzeptieren',
             disableText: 'Disable Cookies',
             moreText: 'Mehr',
@@ -142,7 +144,8 @@ window.COOKIES_ENABLER = window.COOKIES_ENABLER || (function () {
               document.getElementById('ce-banner-html').innerHTML :
 
 
-              `<p> ${options.textHTML}</p>
+              `<p> ${options.titleHTML}</p><br>
+              <p> ${options.textHTML}</p>
               <p style="text-align: center;">
               <a href="#" rel="noopener" aria-label="Accept cookies" class="ce-accept ${options.classAccept}">${options.enableText}</a><a href="#" rel="noopener" aria-label="Accept cookies" class="ce-accept ${options.classAccept}">Nur notwendige Cookies akzeptieren</a>${options.hasCancelButton ? `<a aria-label="Reject cookies" href="#" class="ce-disable ${options.classDisable}">${options.disableText}</a>` : ''}<a href="${options.linkMore}" rel="noopener" aria-label="Privacy policy information" class="ce-more-link ${options.classMore}">${options.moreText}</a>
               </p>`
